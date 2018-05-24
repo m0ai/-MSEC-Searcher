@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      input[type=checkbox]{
+      	height: 0;
+      	width: 0;
+      	visibility: hidden;
+        margin-bottom: 10px;
+      }
+
+      label[type=switch_label] {
+      	cursor: pointer;
+      	text-indent: -9999px;
+      	width: 45px;
+      	height: 23.5px;
+      	background: grey;
+      	display: inline-block;
+      	border-radius: 25px;
+      	position: relative;
+      }
+
+      label[type=switch_label]:after {
+      	content: '';
+      	position: absolute;
+      	top: 2px;
+      	left: 2px;
+      	width: 20px;
+      	height: 20px;
+      	background: #fff;
+      	border-radius: 23px;
+      	transition: 0.3s;
+      }
+
+      input:checked + label {
+      	background: #0080ff;
+      }
+
+      input:checked + label:after {
+      	left: calc(100% - 1.5px);
+      	transform: translateX(-100%);
+      }
+
+      label[type=switch_label]:active:after {
+      	width: 30px;
+      }
+
+      // centering
+      body {
+      	display: flex;
+      	justify-content: center;
+      	align-items: center;
+      	height: 100vh;
+      }
+
+      .fieldset {
+        margin: 1px;
+      }
+      .fieldname {
+        display: inline;
+        vertical-align: bottom;
+        line-height: 25px;
+        text-align: center;
+        dashed #f69c55;
+      }
+
+      <!-- Search Bar -->
+      body{
+        padding-top: 75px;
+      }
+
+      .search-container{
+        width: 200px;
+        padding-right: 20px;
+        display: block;
+        margin: 15px 5px;
+      }
+
+
+      @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+      /* fontawesome */
+      [class*="fontawesome-"]:before {
+        font-family: 'FontAwesome', sans-serif;
+      }
+
+      body{
+        text-align:center;
+
+        background-color:#ebebeb;
+      }
+
+      .cf:before, .cf:after{
+          content:"";
+          display:table;
+      }
+
+      .cf:after{
+          clear:both;
+      }
+
+      .cf{
+          zoom:1;
+      }
+
+       /* Form wrapper styling */
+      .search-wrapper {
+      width: 240px;
+      margin: 15px auto 50px auto;
+
+      }
+
+      /* Form text input */
+
+      .search-wrapper input {
+      width: 160px;
+      height: 20px;
+      padding: 10px 15px;
+      float: left;
+      font: normal 16px 'Arial', 'Tahoma';
+      border: 0;
+      background: #fff;
+      border-radius: 5px 0 0 5px;
+      }
+
+      .search-wrapper input:hover + .search-wrapper button {
+          background: #ccc
+      }
+
+      .search-wrapper input:focus {
+          outline: 0;
+          background: #fff;
+
+      }
+
+      .search-wrapper input::-webkit-input-placeholder {
+         color: #c6c7c6;
+         font-weight: normal;
+
+      }
+
+      .search-wrapper input:-moz-placeholder {
+          color: #999;
+          font-weight: normal;
+          font-style: italic;
+      }
+
+      .search-wrapper input:-ms-input-placeholder {
+          color: #999;
+          font-weight: normal;
+          font-style: italic;
+      }
+
+      /* Form submit button */
+      .search-wrapper button {
+      overflow: visible;
+      position: relative;
+      float: right;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      height: 40px;
+      width: 50px;
+      font:  18px 'Arial', 'Tahoma';
+      color: white;
+      background: #c1c1c1;
+      border-radius: 0 5px 5px 0;
+      transition: all 2.0s linear;
+          -webkit-transition: all 0.2s linear;
+          -moz-transition: all 0.2s linear;
+          -ms-transition: all 0.2s linear;
+          -o-transition: all 0.2s linear;
+      }
+
+      .search-wrapper button:hover{
+          background: #0080ff;
+          transition: all 2.0s linear;
+          -webkit-transition: all 0.2s linear;
+          -moz-transition: all 0.2s linear;
+          -ms-transition: all 0.2s linear;
+          -o-transition: all 0.2s linear;
+      }
+
+      .search-wrapper button:active,
+      .search-wrapper button:focus{
+          background: #00bbff;
+          outline: 0;
+          transition: all 0s linear;
+          -webkit-transition: all 0s linear;
+          -moz-transition: all 0s linear;
+          -ms-transition: all 0s linear;
+          -o-transition: all 0s linear;
+
+      }
+
+
+
+      .search-wrapper button:hover:before{
+          border-right-color: #0080ff;
+
+      }
+
+      .search-wrapper button:focus:before,
+      .search-wrapper button:active:before{
+              border-right-color: #6080ff;
+      }
+
+      .search-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
+          border: 0;
+          padding: 0;
+      }
+
+
+      select {
+        height: 40px;
+        width: 240px; /* 원하는 너비설정 */
+        padding: 10px 15px;
+
+        font: normal 14px 'Arial', 'Tahoma';
+        background: white; url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 네이티브 화살표 대체 */
+        border: 0px solid #999;
+        border-radius: 5px; /* iOS 둥근모서리 제거 */
+
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */
+        -moz-appearance: none;
+        appearance: none;
+        margin-bottom: 15px;
+      }
+
+
+        /* IE 10, 11의 네이티브 화살표 숨기기 */
+      select::-ms-expand {
+        display: none;
+      }
+
+    table {
+        width: 100%;
+    }
+
+    table #searchedResultTable th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    </style>
+    <title> Hello Extensions </title>
+    <meta charset="utf-8" name="viewport"  >
+    <script src="jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+     $(".search-wrapper input").mouseenter(function(){
+         $(".search-wrapper button").css("background-color", "#0080ff");
+
+     });
+   $(".search-wrapper input").mouseout(function(){
+         $(".search-wrapper button").css("background-color", "" );
+      });
+});
+</script>
+  </head>
+
+  <body>
+    <h1>이곳은 병특입니까</h1>
+    <div class="search-wrapper cf">
+      <form action="#" >
+        <select id="worktype">
+          <option value="1" selected>산업기능요원</option>
+          <option value="2">전문연구요원</option>
+        </select>
+        <input type="text" id="search-bar" placeholder="Search" required="">
+        <button type="submit"><span class="">검색</span>
+        </button>
+      </form>
+      <table id="searchedResultTable" style= "display:none;">
+        <thead>
+          <tr>
+            <td>회사명</td>
+            <td>장소</td>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div> <!-- end of content -->
+
+  </body>
+  <script type=text/javascript>
+      $SCRIPT_ROOT="http://114.207.113.7:5000";
+      function searchCompany(companyName, id) {
+          $.getJSON($SCRIPT_ROOT + '/moai/is_designated_enterprise', {
+            company_name : companyName,
+            type : $( "#worktype" ).val(),
+          }, function(data) {
+            $('#searchedResultTable').show();
+            var output;
+             $('#searchedResultTable > tbody').empty();
+            $.each(data,function(i,e) {
+              // here you structured the code depend on the table of yours
+              output += '<tr><td>'+e.company_name+'</td><td>'+e.location+'</td></tr>';
+            });
+            $('#searchedResultTable > tbody').append(output);
+          });
+          return false;
+      }
+      function getParameterByName(name) {
+        var res = new RegExp(
+            // Parameter names always start after a ? or &.
+            '[\?&]' +
+            // Make sure any [ or ] are escaped in the name.
+            name.replace(/\[/g, '\\\[').replace(/\]/g, '\\\]') +
+
+            // Either match a =... or match an empty value.
+            // Values can be terminated by an & a # or the end of the string ($).
+            '(?:=([^&#]*))?(?:[&#]|$)'
+        ).exec(window.location.search);
+
+        return res ?
+          (res[1] ? // res[1] will be undefined for a parameter without value.
+            decodeURIComponent(res[1].replace(/\+/g, ' ')) : ''
+          ) : null;
+      }
+
+      $("form").submit(function (e) {
+        var companyName = $("#search-bar").val();
+        var id = getParameterByName('search-bar');
+        console.log("Called");
+        searchCompany(companyName, 'id');
+        e.preventDefault();
+      });
+
+      $('#search-button').bind('click', function(e) {
+        var companyName = $("#search-bar").val();
+        var id = getParameterByName('search-bar');
+        searchCompany(companyName, 'id');
+        e.preventDefault();
+      });
+
+
+  </script>
+
+  <script>
+
+/*
+   $(document).ready(function(){
+     $("#search-button").click(function(e){
+       e.preventDefault();
+       $company_name = $("#search-bar").val();
+       $search_type = "1";
+       console.log($company_name);
+       $.ajax({type: "POST",
+               url: "http://114.207.113.7:5000/moai/is_designated_enterprise",
+               data: { "company_name" : "세인트",
+
+                       "type" : "1",
+                     },
+               error:function(result){ },
+               success:function(result){
+                 document.console.log("TEST");
+               }});
+         });
+     });*/
+</script>
+
+</html>
